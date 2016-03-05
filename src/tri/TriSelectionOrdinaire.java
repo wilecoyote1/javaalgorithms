@@ -10,6 +10,8 @@
 package tri;
 
 import java.util.Arrays;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Logger;
 
 /**
  * Tri par insertion
@@ -17,6 +19,18 @@ import java.util.Arrays;
  */
 public class TriSelectionOrdinaire {
 
+    static final Logger log = Logger.getLogger(TriSelectionOrdinaire.class.getName());
+    static final ConsoleHandler consoleHandler = new ConsoleHandler();
+
+
+    /**
+     * prend un tableau aléatoire en paramètre et le retourne trié, en utilisant l'algorithme de tri par sélection
+     * ordinaire.
+     *
+     * @param array tableau aléatoire à trier
+     * @param debug affiche les différentes étapes du tri
+     * @return le tableau trié
+     */
     public static int[] runDebug(int[] array, boolean debug) {
         for (int i = 0; i < array.length; i++) {
             if (debug) {
@@ -35,11 +49,17 @@ public class TriSelectionOrdinaire {
         return array;
     }
 
+    /**
+     * trie par sélection sans mode debug
+     * @param array
+     * @return
+     */
     public static int[] run(int[] array) {
         return runDebug(array, false);
     }
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(run(UtilTri.getArrayAleatoire(10, 50))));
+        log.addHandler(consoleHandler);
+        log.fine(Arrays.toString(run(UtilTri.getArrayAleatoire(10, 50))));
     }
 }
