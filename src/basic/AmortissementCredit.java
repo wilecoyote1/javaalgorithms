@@ -21,17 +21,22 @@ public class AmortissementCredit {
     Double taux;
     int n;
     int C;
+    boolean isAnnuel;
+    String periode;
 
-    public AmortissementCredit(double taux, int n, int C) {
-        this.taux = taux;
-        this.n = n;
+    public AmortissementCredit(double taux, int n, int C,boolean isAnnuel) {
+        this.isAnnuel = isAnnuel;
+        if(isAnnuel){
+            this.taux = taux;
+            this.n = n;
+            periode = "année";
+        } else {
+            this.taux = taux/12;
+            this.n = n*12;
+            periode = "mois";
+        }
         this.C = C;
-    }
 
-    public static void main(String[] args) {
-        AmortissementCredit am = new AmortissementCredit(0.0385 / 12, 7 * 12, 70000);
-
-        System.out.println(am.calculAnnuité());
     }
 
     double calculAnnuité() {
@@ -39,7 +44,29 @@ public class AmortissementCredit {
     }
 
     void printTableauAmortissement() {
-        System.out.println("capital");
+        double _capitalrestant = C;
+        double _annuite = this.calculAnnuité();
+
+        String format = "%5s %20s %20s %20s %20s";
+        System.out.printf(format,periode,"capital","annuité","intérêt","capital remboursé");
+        System.out.println();
+
+        format = "%5d %20.1f %20.1f %20.1f %20.1f";
+        for(int i = 0;i<n;i++){
+            double _interet = _capitalrestant * this.taux;
+            double _capitalrembourse = _annuite-_interet;
+            System.out.printf(format,i+1,_capitalrestant,_annuite,_interet,_capitalrembourse);
+            System.out.println();
+            _capitalrestant -= _capitalrembourse;
+        }
 
     }
+
+    public static void main(String[] args) {
+        AmortissementCredit am = new AmortissementCredit(0.0385, 7, 70000,true);
+
+        System.out.println(am.calculAnnuité());
+        am.printTableauAmortissement();
+    }
+
 }
