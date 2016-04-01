@@ -4,29 +4,27 @@
  * Dependencies: In.java StdIn.java StdOut.java
  * <p>
  * le principe du Tri par insertion est un des plus simple que l'on puisse imaginer :
- * vous parcourez la liste de valeur, de la première à la dernière case, en recherchant la plus petite valeur. vous inversez ensuite la plus petite valeur avec
- * l'élement courant, vous avancez ensuite d'un dans la liste
+ * vous parcourez la liste de valeur, de la premiÃ¨re Ã  la derniÃ¨re case, en recherchant la plus petite valeur. vous inversez ensuite la plus petite valeur avec
+ * l'Ã©lement courant, vous avancez ensuite d'un dans la liste
  *
  * par exemple, trions la liste 5 7 2 4 8
- * on part de l'indice 0 et on recherche la plus petite valeur de la liste. Nous trouvons 2. Nous inversion alors le 5 avec le 2. Nous avancons alors à l'indice
+ * on part de l'indice 0 et on recherche la plus petite valeur de la liste. Nous trouvons 2. Nous inversion alors le 5 avec le 2. Nous avancons alors Ã  l'indice
  * 1 et on recommence la boucle, jusqu'au dernier indice
  *
- * exemple d'itération
+ * exemple d'itÃ©ration
  * 5 7 2 4 8 (indice 0)
  * 2 7 5 4 8 (indice 1)
  * 2 4 5 7 8 (indice 2)
  * 2 4 5 7 8 (indice 3)
  * 2 4 5 7 8 (indice 4)
  *
- * on voit rapidement que la complexité algorithmique est égale à O(n). Dans tous les cas, on parcours tous les éléments de la liste
+ * on voit rapidement que la complexitÃ© algorithmique est Ã©gale Ã  O(n). Dans tous les cas, on parcours tous les Ã©lÃ©ments de la liste
  ******************************************************************************/
 
 package tri;
 
 import java.util.Arrays;
 import java.util.Scanner;
-import java.util.logging.ConsoleHandler;
-import java.util.logging.Logger;
 
 /**
  * Tri par insertion
@@ -35,12 +33,12 @@ import java.util.logging.Logger;
 public class TriSelectionOrdinaire {
 
     /**
-     * prend un tableau al�atoire en param�tre et le retourne tri�, en utilisant l'algorithme de tri par s�lection
+     * prend un tableau alï¿½atoire en paramï¿½tre et le retourne triï¿½, en utilisant l'algorithme de tri par sï¿½lection
      * ordinaire.
      *
-     * @param array tableau al�atoire � trier
-     * @param debug affiche les diff�rentes �tapes du tri
-     * @return le tableau tri�
+     * @param array tableau alï¿½atoire ï¿½ trier
+     * @param debug affiche les diffï¿½rentes ï¿½tapes du tri
+     * @return le tableau triï¿½
      */
     public static int[] triSelectionOrdinaire(int[] array, boolean debug) {
         for (int i = 0; i < array.length; i++) {
@@ -61,7 +59,7 @@ public class TriSelectionOrdinaire {
     }
 
     /**
-     * trie par s�lection sans mode debug
+     * trie par sï¿½lection sans mode debug
      * @param array
      * @return
      */
@@ -71,11 +69,12 @@ public class TriSelectionOrdinaire {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Veuillez saisir le nombre d'élément du tableau :");
+        System.out.println("Veuillez saisir le nombre d'Ã©lÃ©ment du tableau :");
         int n = Integer.parseInt(sc.nextLine());
         System.out.println("Veuillez saisir la valeur maximale du tableau :");
         int max = Integer.parseInt(sc.nextLine());
 
-        System.out.println(triSelectionOrdinaire(UtilTri.getArrayAleatoire(n, max)));
+        System.out.println(Arrays.toString(triSelectionOrdinaire(UtilTri.getArrayAleatoire(n, max))))
+        ;
     }
 }
